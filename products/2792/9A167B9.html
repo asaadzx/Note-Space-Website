@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://bluetags.me/uploads/vcards/covers/11319/Screenshot_20230814_162445_Facebook.jpg">
+    <title>Note Space | Our Spaces</title>
+    
+    <!-- PWA -->
+    <meta name="theme-color" content="#3a5a78">
+    <link rel="apple-touch-icon" href="https://bluetags.me/logo.png">
+    <link rel="manifest" href="https://bluetags.me/pwa/1.json">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://bluetags.me/uploads/settings/8/favicon-16x16.png" type="image/png">
+    
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            /* Color Palette */
+            --primary-color: #3a5a78;
+            --primary-dark: #2c455d;
+            --primary-light: #4a6f92;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --accent-dark: #ff5252;
+            --text-color: #333;
+            --text-light: #f8f9fa;
+            --text-dark: #212529;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Typography */
+            --font-base: 1rem;
+            --font-sm: 0.875rem;
+            --font-md: 1.125rem;
+            --font-lg: 1.5rem;
+            --font-xl: 2rem;
+            --font-xxl: 2.5rem;
+            
+            /* Borders & Shadows */
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --box-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            
+            /* Transitions */
+            --transition: all 0.3s ease;
+            --transition-fast: all 0.15s ease;
+            
+            /* Max Widths */
+            --max-width: 1200px;
+            --content-width: 800px;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+        
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .section-padding {
+            padding: var(--space-xl) 0;
+        }
+        
+        /* Header Section */
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-xl);
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: var(--font-xxl);
+            margin-bottom: var(--space-sm);
+            font-weight: 700;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-base);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .back-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+        }
+        
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .product-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-content {
+            padding: var(--space-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-xs);
+            color: var(--primary-color);
+        }
+        
+        .product-description {
+            margin-bottom: var(--space-sm);
+            color: var(--text-color);
+            flex: 1;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: var(--font-md);
+            margin-top: var(--space-sm);
+        }
+        
+        .buy-btn {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            padding: var(--space-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-base);
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: var(--space-md);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .buy-btn:hover {
+            background-color: var(--accent-dark);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--box-shadow-lg);
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background: none;
+            border: none;
+            font-size: var(--font-lg);
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .modal-title {
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-md);
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+            font-size: var(--font-base);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-size: var(--font-base);
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            margin-top: var(--space-md);
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            :root {
+                --font-base: 0.9375rem;
+                --font-md: 1rem;
+                --font-lg: 1.25rem;
+                --font-xl: 1.5rem;
+                --font-xxl: 2rem;
+            }
+            
+            .header {
+                height: 250px;
+            }
+            
+            .page-title {
+                font-size: var(--font-xl);
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                height: 200px;
+            }
+            
+            .page-title {
+                font-size: var(--font-lg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Banner -->
+    <header class="header">
+        <img src="https://bluetags.me/uploads/vcards/covers/11319/Screenshot_20230814_162445_Facebook.jpg" alt="Note Space Banner" class="banner-image">
+        <div class="overlay">
+            <a href="9A167B9.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+            <h1 class="page-title">Our Spaces</h1>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Meeting Room -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55566/20250108_161612.jpg" alt="Meeting room" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Meeting Room</h3>
+                    <p class="product-description">
+                        A private room equipped for meetings with a capacity of 10 persons. 
+                        LED screen, free Wi-Fi, AC, white board, office supplies.
+                    </p>
+                    <span class="product-price">EGP 200.00</span>
+                    <button class="buy-btn" data-id="1302" onclick="openModal('1302', 'Meeting Room', '200.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Outdoor Shared Space -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55565/20250108_162355.jpg" alt="Outdoor shared space" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Outdoor Shared Space</h3>
+                    <p class="product-description">
+                        A relaxing view to get inspired while working on your projects.
+                    </p>
+                    <span class="product-price">EGP 80.00</span>
+                    <button class="buy-btn" data-id="1303" onclick="openModal('1303', 'Outdoor Shared Space', '80.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Craft Room -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55564/20250115_233235.jpg" alt="Craft room" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Craft Room</h3>
+                    <p class="product-description">
+                        A private space suitable for inspirational workshops and artistic activities. 
+                        Capacity: up to 15 persons.
+                    </p>
+                    <span class="product-price">EGP 200.00</span>
+                    <button class="buy-btn" data-id="1304" onclick="openModal('1304', 'Craft Room', '200.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Office -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55563/IMG-20250115-WA0017.jpg" alt="Office" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Private Office</h3>
+                    <p class="product-description">
+                        A private office with a capacity of 3 persons.
+                    </p>
+                    <span class="product-price">EGP 120.00</span>
+                    <button class="buy-btn" data-id="1305" onclick="openModal('1305', 'Private Office', '120.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Indoor Shared Space -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55562/IMG-20250112-WA0029.jpg" alt="Indoor shared space" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Indoor Shared Space</h3>
+                    <p class="product-description">
+                        A quiet environment to finish all your daily tasks with free Wi-Fi access.
+                    </p>
+                    <span class="product-price">EGP 20.00</span>
+                    <button class="buy-btn" data-id="1306" onclick="openModal('1306', 'Indoor Shared Space', '20.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Office 2 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55567/IMG-20250112-WA0023.jpg" alt="Office 2" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Office 2</h3>
+                    <p class="product-description">
+                        Another private office option for your needs.
+                    </p>
+                    <span class="product-price">EGP 120.00</span>
+                    <button class="buy-btn" data-id="6433" onclick="openModal('6433', 'Office 2', '120.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Lecture Room -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://bluetags.me/uploads/vcards/products/55568/20250108_161552.jpg" alt="Lecture room" class="product-image" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Lecture Room</h3>
+                    <p class="product-description">
+                        Perfect space for presentations and lectures.
+                    </p>
+                    <span class="product-price">EGP 250.00</span>
+                    <button class="buy-btn" data-id="6434" onclick="openModal('6434', 'Lecture Room', '250.00')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Buy Product Modal -->
+    <div id="buyProductModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title">Book Space</h2>
+            <form id="productBuyForm">
+                <input type="hidden" name="_token" value="DeSY5IfWsCiVueQMhfGrxFfpyGuadZwdby6TK9xe">
+                <input type="hidden" id="productId" name="product_id">
+                
+                <div class="form-group">
+                    <label for="name">Your Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" id="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email <span class="text-danger">*</span></label>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address <span class="text-danger">*</span></label>
+                    <textarea name="address" id="address" placeholder="Your Address" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="payment_method">Payment Method <span class="text-danger">*</span></label>
+                    <select class="form-select" id="productPaymentMethod" name="payment_method" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="cash">Cash</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Space:</label>
+                    <span id="modalProductName"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label>Price:</label>
+                    <span id="modalProductPrice"></span> EGP
+                </div>
+                
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // Modal functionality
+        function openModal(productId, productName, productPrice) {
+            document.getElementById('productId').value = productId;
+            document.getElementById('modalProductName').textContent = productName;
+            document.getElementById('modalProductPrice').textContent = productPrice;
+            document.getElementById('buyProductModal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('buyProductModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('buyProductModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Form submission
+        document.getElementById('productBuyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to your server
+            // For demonstration, we'll just show an alert
+            alert('Thank you for your booking! We will contact you shortly.');
+            
+            // Reset form and close modal
+            this.reset();
+            closeModal();
+        });
+    </script>
+</body>
+</html>

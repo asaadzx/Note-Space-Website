@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="DeSY5IfWsCiVueQMhfGrxFfpyGuadZwdby6TK9xe">
+    <meta property="og:image" content="https://bluetags.me/uploads/vcards/covers/11319/Screenshot_20230814_162445_Facebook.jpg">
+    <title>Note Space | Premium Co-working Space in Cairo</title>
+    
+    <!-- PWA -->
+    <meta name="theme-color" content="#3a5a78">
+    <link rel="apple-touch-icon" href="https://bluetags.me/logo.png">
+    <link rel="manifest" href="https://bluetags.me/pwa/1.json">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://bluetags.me/uploads/settings/8/favicon-16x16.png" type="image/png">
+    
+    <style>
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --light-text: #f8f9fa;
+            --dark-text: #212529;
+            --border-radius: 12px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Center all sections */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Section */
+        .header {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            color: var(--light-text);
+        }
+        
+        .profile-section {
+            display: flex;
+            align-items: flex-end;
+            gap: 2rem;
+            margin-top: -80px;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .profile-info .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .description {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-card a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* QR Code */
+        .qr-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .qr-section h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .qr-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .qr-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            display: inline-block;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+        
+        .qr-profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            margin-top: 2rem;
+        }
+        
+        /* Services Section */
+        .services-section {
+            margin: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Products Section */
+        .products-section {
+            margin: 3rem 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 0.5rem;
+        }
+        
+        /* Business Hours */
+        .hours-section {
+            margin: 3rem 0;
+        }
+        
+        .hours-grid {
+            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .hour-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .hour-card.today {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .hour-card.today .hour-icon {
+            color: white;
+        }
+        
+        .hour-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+        }
+        
+        .hour-info {
+            flex: 1;
+        }
+        
+        .hour-day {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Contact Form */
+        .contact-form-section {
+            margin: 3rem 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Footer */
+        .footer {
+            color: var(--primary-color);
+            width: 100%;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .add-contact-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            margin: 1rem 0;
+            text-decoration: none;
+        }
+        
+        .add-contact-btn:hover {
+            background-color: #ff5252;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .profile-section {
+                flex-direction: column;
+                display: grid;
+                align-items: center;
+                text-align: center;
+                margin-top: -120px;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid, .products-grid, .hours-grid {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 300px;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+            
+            .services-grid, .products-grid, .hours-grid {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                height: 250px;
+            }
+            
+            .profile-info h1 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-info .tagline {
+                font-size: 1rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .services-grid, .products-grid, .hours-grid {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Header with Banner and Profile -->
+        <header class="header">
+            <img src="https://bluetags.me/uploads/vcards/covers/11319/Screenshot_20230814_162445_Facebook.jpg" alt="Note Space Banner" class="banner-image">
+            <div class="overlay">
+                <div class="container">
+                    <div class="profile-section">
+                        <img src="https://bluetags.me/uploads/vcards/profiles/11460/Picsart_23-08-14_19-00-14-476.png" alt="Note Space Logo" class="profile-image">
+                        <div class="profile-info">
+                            <h1>Note Space</h1>
+                            <p class="tagline">Premium Co-working Space in Cairo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Description -->
+        <section class="container">
+            <div class="description">
+                <p>مكانك المفضل ، اللي تقدر تخلص كل الحاجات المتراكمة عليك وانت في قمة روقانك</p>
+                <p>Your favorite place to get all your work done while relaxing in comfort.</p>
+            </div>
+        </section>
+        
+        <!-- Social Links -->
+        <section class="container">
+            <div class="social-links">
+                <a href="https://maps.app.goo.gl/vZVM6SPCNaQdVhwq7" target="_blank" class="social-link" title="Location">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+                <a href="https://www.facebook.com/notespace1?mibextid=ZbWKwL" target="_blank" class="social-link" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/notespace2022?igshid=NjIwNzIyMDk2Mg==" target="_blank" class="social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@note.space2022?_t=ZS-8uPWfHV4y0e&_r=1" target="_blank" class="social-link" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://wa.me/c/201033552155" target="_blank" class="social-link" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Contact Information -->
+        <section class="container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:note.space2021@gmail.com">note.space2021@gmail.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <a href="tel:+201033552155">+20 1033552155</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Address</h3>
+                    <p>Cairo - Elshorouk City</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services -->
+        <section class="container services-section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://bluetags.me/uploads/vcards/services/11750/Picsart_23-08-19_13-40-32-075~2.jpg" alt="Service 1" class="service-image">
+                    <div class="service-content">
+                        <h3>Free Service</h3>
+                        <p>Complimentary services we provide to all our members</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://bluetags.me/uploads/vcards/services/11749/Picsart_23-08-19_13-40-50-872~2.jpg" alt="Service 2" class="service-image">
+                    <div class="service-content">
+                        <h3>Free Service</h3>
+                        <p>Additional complimentary services</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://bluetags.me/uploads/vcards/services/11748/Picsart_23-08-19_13-41-37-071.jpg" alt="Service 3" class="service-image">
+                    <div class="service-content">
+                        <h3>Free Service</h3>
+                        <p>More value-added services</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Products -->
+        <section class="container products-section">
+            <h2 class="section-title">Our Spaces</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55562/IMG-20250112-WA0029.jpg" alt="Indoor shared space" class="product-image">
+                    <div class="product-content">
+                        <h3>Indoor Shared Space</h3>
+                        <p>A quiet environment to finish all your daily tasks with free Wi-Fi access.</p>
+                        <p class="product-price">EGP 20.00</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55563/IMG-20250115-WA0017.jpg" alt="Office" class="product-image">
+                    <div class="product-content">
+                        <h3>Private Office</h3>
+                        <p>A private office with a capacity of 3 persons.</p>
+                        <p class="product-price">EGP 120.00</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55564/20250115_233235.jpg" alt="Craft room" class="product-image">
+                    <div class="product-content">
+                        <h3>Craft Room</h3>
+                        <p>A private space suitable for inspirational workshops and artistic activities. Capacity: up to 15 persons.</p>
+                        <p class="product-price">EGP 200.00</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55565/20250108_162355.jpg" alt="Outdoor shared space" class="product-image">
+                    <div class="product-content">
+                        <h3>Outdoor Shared Space</h3>
+                        <p>A relaxing view to get inspired while working on your projects.</p>
+                        <p class="product-price">EGP 80.00</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55566/20250108_161612.jpg" alt="Meeting room" class="product-image">
+                    <div class="product-content">
+                        <h3>Meeting Room</h3>
+                        <p>A private room equipped for meetings with a capacity of 10 persons. LED screen, free Wi-Fi, AC, white board, office supplies.</p>
+                        <p class="product-price">EGP 200.00</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55567/IMG-20250112-WA0023.jpg" alt="Office 2" class="product-image">
+                    <div class="product-content">
+                        <h3>Office 2</h3>
+                        <p>Another private office option for your needs.</p>
+                        <p class="product-price">EGP 120.00</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://bluetags.me/uploads/vcards/products/55568/20250108_161552.jpg" alt="Lecture room" class="product-image">
+                    <div class="product-content">
+                        <h3>Lecture Room</h3>
+                        <p>Perfect space for presentations and lectures.</p>
+                        <p class="product-price">EGP 250.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://bluetags.me/products/2792/9A167B9" class="add-contact-btn">View More Spaces</a>
+            </div>
+        </section>
+        
+        <!-- Business Hours -->
+        <section class="container hours-section">
+            <h2 class="section-title">Business Hours</h2>
+            <div class="hours-grid">
+                <div class="hour-card">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Monday</div>
+                        <div class="hour-time">10:00 AM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="hour-card">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Tuesday</div>
+                        <div class="hour-time">10:00 AM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="hour-card">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Wednesday</div>
+                        <div class="hour-time">10:00 AM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="hour-card">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Thursday</div>
+                        <div class="hour-time">10:00 AM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="hour-card today">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Friday</div>
+                        <div class="hour-time">02:00 PM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="hour-card">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Saturday</div>
+                        <div class="hour-time">10:00 AM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="hour-card">
+                    <div class="hour-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Sunday</div>
+                        <div class="hour-time">10:00 AM - 10:00 PM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Form -->
+        <section class="container contact-form-section">
+            <h2 class="section-title">Contact Us</h2>
+            <form id="enquiryForm">
+                <input type="hidden" name="_token" value="DeSY5IfWsCiVueQMhfGrxFfpyGuadZwdby6TK9xe">
+                <div id="enquiryError" class="alert alert-danger d-none"></div>
+                
+                <div class="form-group">
+                    <label for="name">Your Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" id="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email <span class="text-danger">*</span></label>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message <span class="text-danger">*</span></label>
+                    <textarea name="message" id="message" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <a href="https://bluetags.me/add-contact/2792" class="add-contact-btn">
+                    <i class="fas fa-download"></i> Add to Contacts
+                </a>
+                <p style="margin-top: 1rem;">© <span id="currentYear"></span> Note Space. All rights reserved.</p>
+                <script>
+                    document.getElementById('currentYear').textContent = new Date().getFullYear();
+                </script>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Highlight current day in business hours
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const today = new Date().getDay();
+        const todayName = days[today];
+        
+        document.querySelectorAll('.hour-card').forEach(card => {
+            if (card.querySelector('.hour-day').textContent === todayName) {
+                card.classList.add('today');
+            } else {
+                card.classList.remove('today');
+            }
+        });
+        
+        // QR code download functionality
+        document.getElementById('qr-code-btn').addEventListener('click', function() {
+            const svg = document.querySelector('.qr-code svg');
+            const serializer = new XMLSerializer();
+            const svgStr = serializer.serializeToString(svg);
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                const pngFile = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.download = 'NoteSpace_QRCode.png';
+                downloadLink.href = pngFile;
+                downloadLink.click();
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgStr)));
+        });
+    </script>
+    <script>
+        let isEdit = false;
+        let password = "";
+        let passwordUrl = "https://bluetags.me/vcard/2792/check-password";
+        let enquiryUrl = "https://bluetags.me/vcard/2792/enquiry/store?alias=9A167B9";
+        let appointmentUrl = "https://bluetags.me/vcard/2792/appointment/store?alias=9A167B9";
+        let slotUrl = "https://bluetags.me/session-time/9A167B9";
+        let appUrl = "https://bluetags.me";
+        let vcardId = 2792;
+        let vcardAlias = "9A167B9";
+        let languageChange = "https://bluetags.me/language";
+        let paypalUrl = "https://bluetags.me/admin/paypal-onboard";
+        let lang = "en";
+        let userDateFormate = "1";
+        let userlanguage = "English";
+    </script>
+    <script>
+        const qrCodeEight = document.getElementById("qr-code-eight");
+        const svg = qrCodeEight.querySelector("svg");
+        const blob = new Blob([svg.outerHTML], {
+            type: 'image/svg+xml'
+        });
+        const url = URL.createObjectURL(blob);
+        const image = document.createElement('img');
+        image.src = url;
+        image.addEventListener('load', () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = canvas.height = 200;
+            const context = canvas.getContext('2d');
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            const link = document.getElementById('qr-code-btn');
+            link.href = canvas.toDataURL();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+    <script type="text/javascript">
+        const Ziggy = {
+            "url": "https://bluetags.me",
+            "port": null,
+            "defaults": {},
+            "routes": {
+                // ...existing routes...
+            }
+        };
+
+        !function(t, r) {
+            // ...existing Ziggy logic...
+        }(this, function() {
+            // ...existing Ziggy logic...
+        });
+    </script>
+    <script src="messages.js"></script>
+    <script src="assets/js/custom/helpers.js%3Fid=5618b56aa372a0595d29c11d4120b071"></script>
+    <script src="assets/js/custom/custom.js%3Fid=14fb898739fceaf85aa5e10bea335616"></script>
+    <script src="assets/js/vcards/vcard-view.js%3Fid=440940318ca3dade9ef66a37a4039843"></script>
+    <script src="assets/js/lightbox.js%3Fid=669068e5c699f140a7d6efa6177837b1"></script>
+    <script src="sw.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js").then(
+                (registration) => {
+                    console.log("Service worker registration succeeded:", registration);
+                },
+                (error) => {
+                    console.error(`Service worker registration failed: ${error}`);
+                },
+            );
+        } else {
+            console.error("Service workers are not supported.");
+        }
+    </script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
+</body>
+</html>

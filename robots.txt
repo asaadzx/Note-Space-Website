@@ -1,0 +1,3 @@
+Sitemap: https://bluetags.me/sitemap.xml
+User-agent: *
+Disallow:
